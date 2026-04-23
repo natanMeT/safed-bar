@@ -1,0 +1,96 @@
+.atmosphere-section {
+  background-color: var(--color-black);
+  position: relative;
+  overflow: hidden;
+}
+
+.atmosphere-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.section-supertitle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  letter-spacing: 0.2em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.atmosphere-title {
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.atmosphere-text {
+  font-size: 1.1rem;
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-bottom: 3rem;
+  max-width: 450px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.atmosphere-image-wrapper {
+  position: relative;
+  height: 600px;
+  width: 100%;
+}
+
+.atmosphere-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/wine-cellar-bg.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 40px 40px 0 0; /* Arched top look */
+  z-index: 2;
+}
+
+.image-accent-border {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--color-dark-gold);
+  border-radius: 40px 40px 0 0;
+  z-index: 1;
+}
+
+/* RTL layout fixes */
+html[dir="rtl"] .image-accent-border {
+  right: 15px;
+  left: auto;
+}
+
+@media (max-width: 992px) {
+  .atmosphere-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .atmosphere-content {
+    order: 2;
+    text-align: center;
+  }
+  
+  .atmosphere-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .atmosphere-image-wrapper {
+    order: 1;
+    height: 400px;
+  }
+}

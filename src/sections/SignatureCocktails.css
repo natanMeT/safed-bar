@@ -1,0 +1,78 @@
+.cocktails-section {
+  background-color: var(--color-espresso);
+  position: relative;
+  overflow: hidden;
+}
+
+.cocktails-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.cocktails-title {
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.cocktails-text {
+  font-size: 1.2rem;
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.cocktails-image-wrapper {
+  position: relative;
+  height: 600px;
+  width: 100%;
+}
+
+.cocktails-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/martini-bg.png');
+  background-size: cover;
+  background-position: center;
+  /* Soft fade into the background color */
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+}
+
+html[dir="rtl"] .cocktails-image {
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+}
+
+@media (max-width: 992px) {
+  .cocktails-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .cocktails-content {
+    text-align: center;
+  }
+  
+  .cocktails-image-wrapper {
+    height: 400px;
+  }
+  
+  .cocktails-image {
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  }
+  
+  html[dir="rtl"] .cocktails-image {
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+  }
+}

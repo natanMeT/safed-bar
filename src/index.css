@@ -1,0 +1,101 @@
+:root {
+  --color-black: #080605;
+  --color-espresso: #16100d;
+  --color-dark-gold: #a67b43;
+  --color-gold: #cba365;
+  --color-light-gold: #ebd0a3;
+  --color-white: #fdfbf8;
+  --color-muted: #8d8177;
+  --color-dark-muted: #3a2f2a;
+
+  --font-serif: 'Frank Ruhl Libre', serif;
+  --font-sans: 'Assistant', sans-serif;
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+
+  --transition-fast: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --glass-bg: rgba(8, 6, 5, 0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--color-gold);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-gold);
+}
+
+/* Custom Scrollbar for Luxury feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-muted);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --spacing-xl: 4rem;
+  }
+  
+  .container {
+    padding: 0 6%;
+  }
+
+  h1, h2, h3 {
+    line-height: 1.2;
+  }
+}
+

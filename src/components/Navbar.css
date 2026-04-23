@@ -1,0 +1,142 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  z-index: 1000;
+  transition: background-color var(--transition-fast), backdrop-filter var(--transition-fast), padding var(--transition-fast), border-bottom var(--transition-fast);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+}
+
+.navbar.scrolled {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  height: 80px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* since RTL, or we can use flex-start depending on layout */
+}
+
+/* We are using direction: rtl on html, so flex behaves differently (start is right) */
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--color-gold);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+
+.brand-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-white);
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-gold);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--color-gold);
+  transition: width var(--transition-fast);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: var(--color-espresso);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-fast);
+  }
+  
+  .nav-links.open {
+    max-height: 500px;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-dark-muted);
+  }
+
+  .nav-links a {
+    padding: 1rem 5%;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .nav-actions .btn {
+    display: none; /* Hide large book button on mobile nav */
+  }
+}
+
