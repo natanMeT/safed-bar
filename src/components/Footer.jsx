@@ -35,7 +35,7 @@ export default function Footer() {
       
       <div className="footer-bottom container">
         <p>© {new Date().getFullYear()} מרתף צפת. כל הזכויות שמורות.</p>
-        <p className="credit">עוצב על ידי <a href="#">Your Agency</a></p>
+        <p className="credit">עוצב על ידי <a href="#" style={{color: 'var(--color-gold)', fontWeight: '600'}}>Onyx Development</a></p>
       </div>
     </footer>
   );
