@@ -27,9 +27,39 @@
   .vr-3d-wrapper {
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0.25;
-    width: 380px;
-    height: 380px;
+    opacity: 0.2;
+    width: 280px;
+    height: 280px;
+    perspective: none;
+  }
+
+  /* Disable 3D – use simple 2D float */
+  .vr-3d-inner {
+    transform-style: flat;
+    animation: vrFloat 4s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  /* Show only one face */
+  .vr-face { display: none; }
+  .vr-front {
+    display: block;
+    transform: none;
+    backface-visibility: visible;
+  }
+
+  /* Disable gloss sweep on mobile */
+  .vr-face::after { display: none; }
+  .vr-front::before { display: none; }
+
+  /* Disable blur lights on mobile */
+  .vr-light-1, .vr-light-2 {
+    display: none;
+  }
+
+  /* Remove filter on mobile images */
+  .vr-face img {
+    filter: none;
   }
 }
 
@@ -132,6 +162,11 @@
 @keyframes vrRotate {
   from { transform: rotateX(10deg) rotateY(0deg); }
   to   { transform: rotateX(10deg) rotateY(360deg); }
+}
+
+@keyframes vrFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
 }
 
 @keyframes glossSweep {

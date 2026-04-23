@@ -529,9 +529,6 @@ a { text-decoration: none; color: inherit; }
   .faq-item { padding: 1.2rem 0; }
   .faq-item h3 { font-size: 1rem; }
 
-  /* VR Cube - disable heavy animation on mobile */
-  .vr-cube-wrapper { transform: scale(0.6); }
-
   /* Disable particle canvas on mobile for performance */
   canvas { display: none; }
 }
