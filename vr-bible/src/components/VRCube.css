@@ -1,0 +1,145 @@
+/* ============================================
+   Genesis VR - Rotating 3D Headset Animation
+   ============================================ */
+
+.vr-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.vr-3d-wrapper {
+  perspective: 1200px;
+  width: 520px;
+  height: 520px;
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.55;
+}
+
+@media (max-width: 900px) {
+  .vr-3d-wrapper {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.25;
+    width: 380px;
+    height: 380px;
+  }
+}
+
+.vr-3d-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: vrRotate 14s linear infinite;
+  will-change: transform;
+}
+
+.vr-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 212, 170, 0.25);
+  backface-visibility: hidden;
+}
+
+.vr-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
+  filter: contrast(1.1) saturate(1.2);
+}
+
+/* Gloss sweep */
+.vr-face::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(255,255,255,0.12) 0%,
+    transparent 40%,
+    rgba(0,212,170,0.08) 60%,
+    transparent 80%
+  );
+  border-radius: 28px;
+  animation: glossSweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Box size 360px */
+.vr-front  { transform: translateZ(180px); }
+.vr-back   { transform: rotateY(180deg) translateZ(180px); }
+.vr-right  { transform: rotateY(90deg) translateZ(180px); }
+.vr-left   { transform: rotateY(-90deg) translateZ(180px); }
+.vr-top    { transform: rotateX(90deg) translateZ(180px); }
+.vr-bottom { transform: rotateX(-90deg) translateZ(180px); }
+
+.vr-front  { background: rgba(0, 212, 170, 0.04); }
+.vr-back   { background: rgba(123, 47, 247, 0.04); }
+.vr-right  { background: rgba(0, 180, 230, 0.04); }
+.vr-left   { background: rgba(100, 50, 200, 0.04); }
+.vr-top    { background: rgba(0, 212, 170, 0.03); }
+.vr-bottom { background: rgba(0, 100, 180, 0.03); }
+
+/* Glowing neon edges */
+.vr-front::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 28px;
+  border: 1.5px solid rgba(0, 212, 170, 0.6);
+  box-shadow:
+    0 0 12px rgba(0, 212, 170, 0.4),
+    inset 0 0 12px rgba(0, 212, 170, 0.1);
+  pointer-events: none;
+}
+
+/* Ambient lights around cube */
+.vr-light-1 {
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 212, 170, 0.15) 0%, transparent 70%);
+  animation: ambientPulse 5s ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+.vr-light-2 {
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(123, 47, 247, 0.15) 0%, transparent 70%);
+  animation: ambientPulse 5s ease-in-out infinite reverse;
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+@keyframes vrRotate {
+  from { transform: rotateX(10deg) rotateY(0deg); }
+  to   { transform: rotateX(10deg) rotateY(360deg); }
+}
+
+@keyframes glossSweep {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes ambientPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 0.4; }
+}
