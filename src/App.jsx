@@ -7,6 +7,7 @@ import EventsPage from './pages/EventsPage';
 import GalleryPage from './pages/GalleryPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import SpecialsPage from './pages/SpecialsPage';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 import './pages/PageStyles.css';
@@ -23,6 +24,7 @@ function App() {
           <Route path="/events" element={<EventsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/specials" element={<SpecialsPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>

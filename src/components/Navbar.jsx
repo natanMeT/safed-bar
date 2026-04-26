@@ -37,6 +37,7 @@ export default function Navbar() {
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>בית</Link>
           <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>אודות</Link>
           <Link to="/menu" className={location.pathname === '/menu' ? 'active' : ''}>תפריטים</Link>
+          <Link to="/specials" className={location.pathname === '/specials' ? 'active' : ''}>המיוחדים</Link>
           <Link to="/events" className={location.pathname === '/events' ? 'active' : ''}>אירועים</Link>
           <Link to="/gallery" className={location.pathname === '/gallery' ? 'active' : ''}>גלריה</Link>
           <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>צור קשר</Link>
