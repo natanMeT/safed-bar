@@ -130,9 +130,9 @@ const ScrollSequenceHero = () => {
         {/* Hero Text Content */}
         <div style={{
           position: 'absolute',
-          top: '50%',
+          bottom: '120px',
           left: '50%',
-          transform: 'translate(-50%, -50%)',
+          transform: 'translateX(-50%)',
           textAlign: 'center',
           pointerEvents: 'none',
           width: '100%',
