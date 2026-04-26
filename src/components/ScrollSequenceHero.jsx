@@ -52,24 +52,24 @@ const ScrollSequenceHero = () => {
     canvas.height = rect.height * dpr;
     ctx.scale(dpr, dpr);
 
-    // Object-fit: cover logic
+    // Object-fit: contain logic (to show the whole bottle)
     const imgRatio = img.width / img.height;
     const canvasRatio = rect.width / rect.height;
     
     let renderWidth, renderHeight, offsetX, offsetY;
 
     if (canvasRatio > imgRatio) {
-      // Canvas is wider than image (Desktop view usually for vertical image)
-      renderWidth = rect.width;
-      renderHeight = rect.width / imgRatio;
-      offsetX = 0;
-      offsetY = (rect.height - renderHeight) / 2;
-    } else {
-      // Canvas is taller than image (Mobile view usually)
+      // Canvas is wider than image (Fit to height)
       renderHeight = rect.height;
       renderWidth = rect.height * imgRatio;
       offsetX = (rect.width - renderWidth) / 2;
       offsetY = 0;
+    } else {
+      // Canvas is taller than image (Fit to width)
+      renderWidth = rect.width;
+      renderHeight = rect.width / imgRatio;
+      offsetX = 0;
+      offsetY = (rect.height - renderHeight) / 2;
     }
 
     ctx.clearRect(0, 0, rect.width, rect.height);
